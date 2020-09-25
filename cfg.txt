@@ -1,0 +1,31 @@
+import nltk
+#defining Contex Free Grammar
+grammar = nltk.CFG.fromstring("""
+grammar1 = nltk.CFG.fromstring("""
+ S -> NP VP
+ VP -> V NP | V NP PP
+ PP -> P NP
+ V -> "saw" | "ate" | "walked" |
+ V -> V NP | V NP PP | V Adv
+ PN -> "John" | "Mary" | "Bob" | "Oscar" | "Paris"
+ NP -> Det N | Det N PP
+ Det -> "a" | "an" | "the" | "my"
+ N -> "man" | "dog" | "cat" | "telescope" | "park"
+ P -> "in" | "on" | "by" | "with"
+ Adv -> "suddenly" | "quickly" | "slowly |"very"
+ """) 
+sentence = 'Sally ate a sandwich
+'.split()
+def parse(sent):
+    #Returns nltk.Tree.Tree format output
+    a = []  
+    parser = nltk.ChartParser(grammar)
+    for tree in parser.parse(sent):
+        a.append(tree)
+    return(a[0]) 
+
+#Gives output as structured tree   
+print(parse(sentence))
+
+#Gives tree diagrem in tkinter window
+parse(sentence).draw()

@@ -1,0 +1,18 @@
+grammar1 = nltk.CFG.fromstring("""
+S  -> NP VP
+NP -> Det N | PN
+NP -> PN Conj NP | Det AdjP N
+VP -> V Adj NP | V VP NP | V Adv
+VP -> V NP PP | V Conj V NP | V NP
+PP -> P NP
+AdjP -> Adv Adv Adv Adj
+Det -> 'the' | 'a' | 'The'
+N -> 'sandwich' | 'president' | 'waiter' | 'chairs' | 'tables'
+PN -> 'Oscar'| 'Sally' | 'Mary' | 'Bob'
+Adj  -> 'eating' | 'perplexed'
+V ->  'ate'  | 'wanted' | 'is' | 'died' | 'put' | 'called' | 'saw'
+P -> 'on'
+Adv -> 'suddenly' | 'very' | 'lazy'
+Conj -> 'and'
+""")
+
